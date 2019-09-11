@@ -9,10 +9,13 @@ public class Enemy : MonoBehaviour
     public bool isHorizontal = true;
     private Vector3 originV3;
     Rigidbody2D m_rigidbody2D;
+    private Animator animator;
+
     void Start()
     {
         originV3 = transform.position;
         m_rigidbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,11 +30,15 @@ public class Enemy : MonoBehaviour
             if (isHorizontal)
             {
                 position.x = position.x + Time.deltaTime * speed;
+                animator.SetFloat("moveX", speed);
+                animator.SetFloat("moveY", 0);
 
             }
             else
             {
                 position.y = position.y + Time.deltaTime * speed;
+                animator.SetFloat("moveX", 0);
+                animator.SetFloat("moveY", speed);
             }
             m_rigidbody2D.MovePosition(position);
         }
