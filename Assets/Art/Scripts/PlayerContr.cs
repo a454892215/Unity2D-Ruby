@@ -28,5 +28,7 @@ public class PlayerContr : MonoBehaviour
         animator.SetFloat("moveY", vertical);
 
         m_rigidbody2D.MovePosition(position);
+
+        l
     }
 }
