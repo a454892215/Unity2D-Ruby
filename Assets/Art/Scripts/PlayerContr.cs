@@ -20,6 +20,11 @@ public class PlayerContr : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+       if (Input.GetKey("e"))
+        {
+            animator.SetTrigger("Launch");
+        }
+
 
         Vector2 move = new Vector2(horizontal, vertical);
 
@@ -37,9 +42,17 @@ public class PlayerContr : MonoBehaviour
 
         Vector2 position = m_rigidbody2D.position;
         position = position + speed * move * Time.deltaTime;
-       // position.y = position.y + speed * vertical * Time.deltaTime;
+        // position.y = position.y + speed * vertical * Time.deltaTime;
         m_rigidbody2D.MovePosition(position);
 
-        
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("enemy"))
+        {
+            animator.SetTrigger("Hit");
+        }
     }
 }
