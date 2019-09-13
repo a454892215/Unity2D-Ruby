@@ -7,7 +7,10 @@ public class PlayerContr : MonoBehaviour
     Rigidbody2D m_rigidbody2D;
     public float speed = 3.0f;
     Animator animator;
-    Vector2 lookDirection = new Vector2(1, 0);
+    private Vector2 currentPosition;
+    public Vector2 lookDirection = new Vector2(1, 0);
+
+    public GameObject projectilePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,32 +23,43 @@ public class PlayerContr : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-       if (Input.GetKey("e"))
+        if (Input.GetKey("e"))
         {
             animator.SetTrigger("Launch");
         }
-
 
         Vector2 move = new Vector2(horizontal, vertical);
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             lookDirection.Set(move.x, move.y);
-            print("=====================1===lookDirection:" + lookDirection);
-            lookDirection.Normalize();
-            print("=====================2===lookDirection:" + lookDirection);
+            lookDirection.Normalize(); //使X 或者Y为1
         }
 
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
-        Vector2 position = m_rigidbody2D.position;
-        position = position + speed * move * Time.deltaTime;
-        // position.y = position.y + speed * vertical * Time.deltaTime;
-        m_rigidbody2D.MovePosition(position);
+        currentPosition = m_rigidbody2D.position;
+        currentPosition = currentPosition + speed * move * Time.deltaTime;
+        m_rigidbody2D.MovePosition(currentPosition);
 
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Launch();
+        }
+
+
+    }
+
+    void Launch()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, currentPosition + Vector2.up * 0.5f, Quaternion.identity);
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(lookDirection, 600);
+        GameObject.Destroy(projectileObject, 2);
+        animator.SetTrigger("Launch");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -55,4 +69,5 @@ public class PlayerContr : MonoBehaviour
             animator.SetTrigger("Hit");
         }
     }
+
 }
