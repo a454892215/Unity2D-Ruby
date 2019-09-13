@@ -26,7 +26,9 @@ public class PlayerContr : MonoBehaviour
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             lookDirection.Set(move.x, move.y);
+            print("=====================1===lookDirection:" + lookDirection);
             lookDirection.Normalize();
+            print("=====================2===lookDirection:" + lookDirection);
         }
 
         animator.SetFloat("Look X", lookDirection.x);
@@ -34,9 +36,8 @@ public class PlayerContr : MonoBehaviour
         animator.SetFloat("Speed", move.magnitude);
 
         Vector2 position = m_rigidbody2D.position;
-        position.x = position.x + speed * horizontal * Time.deltaTime;
-        position.y = position.y + speed * vertical * Time.deltaTime;
-
+        position = position + speed * move * Time.deltaTime;
+       // position.y = position.y + speed * vertical * Time.deltaTime;
         m_rigidbody2D.MovePosition(position);
 
         
