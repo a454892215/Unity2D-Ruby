@@ -29,6 +29,6 @@ public class PlayerContr : MonoBehaviour
 
         m_rigidbody2D.MovePosition(position);
 
-        l
+        
     }
 }
