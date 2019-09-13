@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6335749749560544814, guid: 416e4df875226c1469ccd570e021c9e7,
         type: 3}
       propertyPath: m_Name
-      value: enemy
+      value: enemy_v
       objectReference: {fileID: 0}
     - target: {fileID: 6976805392052241739, guid: 416e4df875226c1469ccd570e021c9e7,
         type: 3}
@@ -66,6 +66,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887053012150309405, guid: 416e4df875226c1469ccd570e021c9e7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887053012150309405, guid: 416e4df875226c1469ccd570e021c9e7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5234866
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887053012150309405, guid: 416e4df875226c1469ccd570e021c9e7,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.00079473853
+      objectReference: {fileID: 0}
+    - target: {fileID: 8887053012150309405, guid: 416e4df875226c1469ccd570e021c9e7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.004235
       objectReference: {fileID: 0}
     - target: {fileID: 999004966, guid: 416e4df875226c1469ccd570e021c9e7, type: 3}
       propertyPath: isHorizontal
