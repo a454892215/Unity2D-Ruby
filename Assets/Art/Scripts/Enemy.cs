@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
     public void Fix()
     {
         broken = false;
-        m_rigidbody2D.simulated = false;
+        m_rigidbody2D.simulated = false; 
         animator.Play("Idle");
     }
 }
