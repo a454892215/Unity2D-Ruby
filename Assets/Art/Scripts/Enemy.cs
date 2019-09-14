@@ -20,9 +20,17 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
     private float movedTime = 500f;
+
+    private bool broken = true;
     private
     void Update()
     {
+
+        if (!broken)
+        {
+            return;
+        }
+
         if (movedTime < changeDirTime)
         {
             movedTime += Time.deltaTime;
@@ -47,7 +55,12 @@ public class Enemy : MonoBehaviour
             movedTime = 0;
             speed = -speed;
         }
+    }
 
-
+    public void Fix()
+    {
+        broken = false;
+        m_rigidbody2D.simulated = false;
+        animator.Play("Idle");
     }
 }

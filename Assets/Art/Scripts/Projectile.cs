@@ -31,12 +31,12 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        //we also add a debug log to know what the projectile touch
-      
-        if (other.gameObject.tag.Equals("enemy"))
+        Enemy e = other.collider.GetComponent<Enemy>();
+        if (e != null)
         {
-            GameObject.Destroy(other.gameObject);
+            e.Fix();
         }
+        Destroy(gameObject);
     }
-    
+
 }
