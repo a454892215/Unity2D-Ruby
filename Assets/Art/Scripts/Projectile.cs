@@ -16,6 +16,12 @@ public class Projectile : MonoBehaviour
         m_rigidbody2d = GetComponent<Rigidbody2D>(); //start 函数中拿不到？？
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
 
 
     public void Launch(Vector2 direction, float force)
@@ -23,12 +29,14 @@ public class Projectile : MonoBehaviour
         m_rigidbody2d.AddForce(direction * force);
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.tag.Equals("enemy"))
+        //we also add a debug log to know what the projectile touch
+      
+        if (other.gameObject.tag.Equals("enemy"))
         {
-            GameObject.Destroy(collision.gameObject);
+            GameObject.Destroy(other.gameObject);
         }
     }
+    
 }
