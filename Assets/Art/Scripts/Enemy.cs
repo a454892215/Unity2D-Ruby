@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private Vector3 originV3;
     Rigidbody2D m_rigidbody2D;
     private Animator animator;
-    public ParticleSystem particleSystem;
+    public ParticleSystem m_particleSystem;
     void Start()
     {
         originV3 = transform.position;
@@ -62,6 +62,6 @@ public class Enemy : MonoBehaviour
         broken = false;
         m_rigidbody2D.simulated = false;
         animator.Play("Idle");
-        particleSystem.Stop();
+        m_particleSystem.Stop();
     }
 }

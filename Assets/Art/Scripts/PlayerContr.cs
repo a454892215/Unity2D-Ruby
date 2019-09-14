@@ -11,6 +11,10 @@ public class PlayerContr : MonoBehaviour
     public Vector2 lookDirection = new Vector2(1, 0);
 
     public GameObject projectilePrefab;
+
+    private int maxHealth = 5;
+    private int currentHealth = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +71,12 @@ public class PlayerContr : MonoBehaviour
         if (collision.gameObject.tag.Equals("enemy"))
         {
             animator.SetTrigger("Hit");
+            currentHealth--;
+            UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+            if(currentHealth <= 0)
+            {
+                GameObject.Destroy(gameObject);
+            }
         }
     }
 
