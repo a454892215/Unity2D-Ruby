@@ -39,8 +39,8 @@ public class PlayerContr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = ETCInput.GetAxis("Horizontal");
+        float vertical = ETCInput.GetAxis("Vertical");
         if (Input.GetKey("e"))
         {
             animator.SetTrigger("Launch");
