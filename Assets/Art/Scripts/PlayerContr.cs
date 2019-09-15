@@ -20,6 +20,8 @@ public class PlayerContr : MonoBehaviour
 
     public AudioClip hitPlayer;
     public AudioClip launchclip;
+
+    public GameObject attachButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,13 @@ public class PlayerContr : MonoBehaviour
         animator = GetComponent<Animator>();
 
         audioSource = GetComponent<AudioSource>();
+
+        attachButton.GetComponent<ETCButton>().onDown.AddListener(M);
+    }
+
+    void M()
+    {
+        Launch();
     }
 
     internal void ChangeHealth(int value)
@@ -98,7 +107,7 @@ public class PlayerContr : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("enemy"))
         {
-           GameSound.instance.PlaySound(hitPlayer);
+            GameSound.instance.PlaySound(hitPlayer);
             animator.SetTrigger("Hit");
             currentHealth--;
             updateHealthUI();
