@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     Rigidbody2D m_rigidbody2d;
     // Start is called before the first frame update
+
+    public AudioClip hitRobotClip;
     void Start()
     {
        
@@ -35,6 +37,7 @@ public class Projectile : MonoBehaviour
         if (e != null)
         {
             e.Fix();
+            GameSound.instance.PlaySound(hitRobotClip);
         }
         Destroy(gameObject);
     }

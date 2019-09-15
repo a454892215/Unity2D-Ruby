@@ -141,3 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b7d267f35de5b4fbedb4f5f03a6be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitRobotClip: {fileID: 8300000, guid: ae904c7305df7344d86b2092c0cb3a26, type: 3}

@@ -5,6 +5,9 @@ using UnityEngine;
 public class CollectibleHealth : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public AudioClip collectedClip;
+
     void Start()
     {
         
@@ -21,6 +24,13 @@ public class CollectibleHealth : MonoBehaviour
         if (collision.tag.Equals("Player"))
         {
             GameObject.Destroy(gameObject);
+            PlayerContr controller = collision.GetComponent<PlayerContr>();
+            if (controller != null)
+            {
+                GameSound.instance.PlaySound(collectedClip);
+                controller.ChangeHealth(1);
+            }
+          
         }
      
     }

@@ -120,6 +120,8 @@ MonoBehaviour:
   lookDirection: {x: 1, y: 0}
   projectilePrefab: {fileID: 5583131581885616022, guid: 0104acdf3ae771a48a6c1ea6c957ecb1,
     type: 3}
+  hitPlayer: {fileID: 8300000, guid: 9b1bb1f450b7d444fa4a8019d13519a7, type: 3}
+  launchclip: {fileID: 8300000, guid: b2edfd40873655249ba0e01a5cf705be, type: 3}
 --- !u!61 &2799395052889523843
 BoxCollider2D:
   m_ObjectHideFlags: 0

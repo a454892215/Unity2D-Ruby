@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,11 +16,24 @@ public class PlayerContr : MonoBehaviour
     private int maxHealth = 5;
     private int currentHealth = 5;
 
+    private static AudioSource audioSource;
+
+    public AudioClip hitPlayer;
+    public AudioClip launchclip;
     // Start is called before the first frame update
     void Start()
     {
         m_rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    internal void ChangeHealth(int value)
+    {
+        currentHealth += value;
+        currentHealth = currentHealth > maxHealth ? maxHealth : currentHealth;
+        updateHealthUI();
     }
 
     // Update is called once per frame
@@ -76,19 +90,33 @@ public class PlayerContr : MonoBehaviour
         projectile.Launch(lookDirection, 600);
         GameObject.Destroy(projectileObject, 2);
         animator.SetTrigger("Launch");
+        PlaySound(launchclip);
+    }
+
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("enemy"))
         {
+            PlaySound(hitPlayer);
             animator.SetTrigger("Hit");
             currentHealth--;
-            UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
-            if(currentHealth <= 0)
-            {
-                GameObject.Destroy(gameObject);
-            }
+            updateHealthUI();
+        }
+    }
+
+    private void updateHealthUI()
+    {
+
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+        if (currentHealth <= 0)
+        {
+            GameObject.Destroy(gameObject);
         }
     }
 
