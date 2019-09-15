@@ -11,11 +11,15 @@ public class Enemy : MonoBehaviour
     Rigidbody2D m_rigidbody2D;
     private Animator animator;
     public ParticleSystem m_particleSystem;
+
+    private AudioSource audioSource;
     void Start()
     {
         originV3 = transform.position;
         m_rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,5 +67,6 @@ public class Enemy : MonoBehaviour
         m_rigidbody2D.simulated = false;
         animator.Play("Idle");
         m_particleSystem.Stop();
+        audioSource.Stop();
     }
 }
