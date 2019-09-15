@@ -90,20 +90,15 @@ public class PlayerContr : MonoBehaviour
         projectile.Launch(lookDirection, 600);
         GameObject.Destroy(projectileObject, 2);
         animator.SetTrigger("Launch");
-        PlaySound(launchclip);
+        GameSound.instance.PlaySound(launchclip);
     }
 
-
-    public void PlaySound(AudioClip clip)
-    {
-        audioSource.PlayOneShot(clip);
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("enemy"))
         {
-            PlaySound(hitPlayer);
+           GameSound.instance.PlaySound(hitPlayer);
             animator.SetTrigger("Hit");
             currentHealth--;
             updateHealthUI();
