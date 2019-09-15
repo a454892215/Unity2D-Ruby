@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7622167076843197240}
   - component: {fileID: 7622167076843197243}
   - component: {fileID: 5722561639752326218}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: JambiIdle1
   m_TagString: enemy
   m_Icon: {fileID: 0}
