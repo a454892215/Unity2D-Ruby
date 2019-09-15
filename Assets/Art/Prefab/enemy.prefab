@@ -146,7 +146,7 @@ MonoBehaviour:
   changeDirTime: 2
   speed: 2
   isHorizontal: 1
-  particleSystem: {fileID: 8871694684304969266}
+  m_particleSystem: {fileID: 8871694684304969266}
 --- !u!95 &315213658767926520
 Animator:
   serializedVersion: 3
