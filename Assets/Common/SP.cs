@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SP
 {
-    public static void SetBool(string key, bool value)
+    public static void SetgitBool(string key, bool value)
     {
         PlayerPrefs.SetString(key + "Bool", value.ToString());
     }
