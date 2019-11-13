@@ -1,0 +1,8 @@
+    signingConfigs {
+        signing {
+            keyAlias 'test'
+            keyPassword '123456'
+            storeFile file('../keystore.jks')
+            storePassword '123456'
+        }
+    }
